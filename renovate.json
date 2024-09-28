@@ -1,0 +1,30 @@
+{
+  "extends": ["config:base"],
+  "automerge": true,
+  "automergeType": "squash",
+  "automergeStrategy": "merge",
+  "prHourlyLimit": 1,
+  "prConcurrentLimit": 3,
+  "ignorePaths": ["**/test/**", "**/docs/**"],
+
+  "dependencyDashboard": true,
+
+  "packageRules": [
+    {
+      "depTypeList": ["dependencies", "devDependencies"],
+      "groupName": "Spring Boot dependencies",
+      "matchDatasources": ["maven-central"],
+      "updateTypes": ["minor", "patch"],
+      "automerge": true,
+      "schedule": ["before 5am on Monday"]
+    },
+    {
+      "depTypeList": ["dependencies"],
+      "groupName": "Other dependencies",
+      "matchDatasources": ["maven-central"],
+      "updateTypes": ["minor", "patch"],
+      "automerge": true,
+      "schedule": ["before 5am on Monday"]
+    }
+  ]
+}
